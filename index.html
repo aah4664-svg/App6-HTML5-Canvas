@@ -17,7 +17,9 @@ Timothy Riedel
 triedel@utexas.edu
  
 Brief Description of Goal of Code:
-create an interactive interface
+1. draw a rectangle, user's name
+2. load an image
+3. clear canvas
  
 Known Issues:
 canvas size
@@ -28,21 +30,22 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 -->
 	
 <head>
-    <title>App6---HTML5-Canvas</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="w3.css">
-    <link rel="stylesheet" href="w3-colors-flat.css">
+    <title>App6---HTML5-Canvas</title> <!--title shown on browser tab-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--allows website to be mobile-->
+    <link rel="stylesheet" href="w3.css"> <!--importing w3.css styling library-->
+    <link rel="stylesheet" href="w3-colors-flat.css"> <!--importing w3 flat color styling library-->
 
     <style>
-        body {
+/* removes the default margin around page*/
+        body { 
             margin: 0;
         }
-
+/* allows the canvas to be compatable with smaller screens*/
         #myCanvas {
             max-width: 100%;
             height: auto;
         }
-
+/* styles for extra pages if later on there is pages added*/
         .page {
             width: 100vw;
             height: 100vh;
@@ -53,7 +56,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
             z-index: 0;
             background-color: hsl(0,0%,100%);
         }
-
+/* moves the selected page into view*/
         .page:target {
             left: 0vw;
             z-index: 1;
@@ -62,70 +65,71 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </head>
 
 <body>
-    <div id="header" class="w3-container w3-flat-carrot">
-        <h1>App6---HTML5-Canvas</h1>
+    <div id="header" class="w3-container w3-flat-carrot"> <!--header section at the top pf the app-->
+        <h1>App6---HTML5-Canvas</h1> <!--main title-->
     </div>
 
-    <div id="content" class="w3-container">
-        <p>Press the buttons below to interact with the canvas!</p>
+    <div id="content" class="w3-container"> <!--main content container-->
+        <p>Press the buttons below to interact with the canvas!</p> <!--user instructions-->
 
-        <canvas id="myCanvas" width="300" height="225" style="border:2px solid #000000;"></canvas>
+        <canvas id="myCanvas" width="300" height="225" style="border:2px solid #000000;"></canvas> <!--canvas elements-->
 
-        <div class="w3-container">
-            <button onclick="drawRect();" class="w3-button w3-grey">Draw Rectangle</button>
-            <button onclick="drawName();" class="w3-button w3-grey">Draw Name</button>
-            <button onclick="drawImg();" class="w3-button w3-grey">Load Image</button>
-            <button onclick="resetCanvas();" class="w3-button w3-grey">Reset Canvas</button>
+        <div class="w3-container"> <!--container that holds all buttons-->
+            <button onclick="drawRect();" class="w3-button w3-grey">Draw Rectangle</button> <!--button that calls drawRect function-->
+            <button onclick="drawName();" class="w3-button w3-grey">Draw Name</button> <!--button that calls drawName function-->
+            <button onclick="drawImg();" class="w3-button w3-grey">Load Image</button> <!--button that calls drawImg function-->
+            <button onclick="resetCanvas();" class="w3-button w3-grey">Reset Canvas</button> <!--button that calls resetCanvas function-->
         </div>
 
         <hr>
-        <p>
+      <!--Disclaimer paragraph-->
+		<p>
             The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
         </p>
         <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
     </div>
 
-    <footer class="w3-bottom w3-container w3-flat-carrot">
+    <footer class="w3-bottom w3-container w3-flat-carrot"> <!--footer for page-->
         <p>DIY!</p>
     </footer>
 
     <script>
-        var docMod = document.lastModified;
-        console.log("This file last modified " + docMod);
+        var docMod = document.lastModified; //useful to troubleshoot
+        console.log("This file last modified " + docMod); //print the last modified date to the browser console
 
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
+        var canvas = document.getElementById("myCanvas"); //find canvas element in page by its ID, variable name
+        var ctx = canvas.getContext("2d"); //creates the 2D context for shape and text
 
-        function drawRect() {
-            ctx.fillStyle = "#0000FF";
-            ctx.fillRect(50, 50, 100, 100);
-            console.log("Rectangle Drawn");
+        function drawRect() { //Rectangle function
+            ctx.fillStyle = "#0000FF"; //set to color blue
+            ctx.fillRect(50, 50, 100, 100); //draw filled rectangle
+            console.log("Rectangle Drawn"); //confirmation to console
         }
 
-        function drawName() {
-            ctx.font = "20px Arial";
-            ctx.fillStyle = "black";
-            ctx.fillText("Amy Hernandez", 20, 200);
-            console.log("Name Drawn");
+        function drawName() { //Name function
+            ctx.font = "20px Arial"; //font size and style
+            ctx.fillStyle = "black"; //text color
+            ctx.fillText("Amy Hernandez", 20, 200); //name 
+            console.log("Name Drawn"); //confirmation to console
         }
 
-        function drawImg() {
-            var myImg = new Image();
-            myImg.src = "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg";
+        function drawImg() { //image function
+            var myImg = new Image(); //create new image
+            myImg.src = "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg"; //cat image address
 
-            myImg.onload = function() {
-                ctx.drawImage(myImg, 150, 50, 80, 80);
-                console.log("Image worked");
+            myImg.onload = function() { //allows image to load fully to prevent errors
+                ctx.drawImage(myImg, 150, 50, 80, 80); //draws onto canvas parameters
+                console.log("Image worked"); //confirmation to console
             };
         }
 
-        function resetCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            console.log("Reset Worked");
+        function resetCanvas() { //reset canvas function
+            ctx.clearRect(0, 0, canvas.width, canvas.height); //clears based on canvas parameters
+            console.log("Reset Worked"); //confirmation to console
         }
     </script>
 
-<footer class="w3-bottom w3-container w3-flat-carrot">
+<footer class="w3-bottom w3-container w3-flat-carrot"> <!--footer-->
 	<p>DIY!</p>
 </footer>
 
