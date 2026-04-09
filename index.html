@@ -101,24 +101,22 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	function drawName() { //draws user's name as text
          ctx.font = "20px Arial"; // Defining the font size and typeface
          ctx.fillStyle = "black"; // Setting text color to black
-        ctx.fillText("Amy Hernandez", 20, 230); // Drawing the string
+        ctx.fillText("Amy Hernandez", 20, 200); // Drawing the string
         console.log("Name Drawn");
     }
 
 	function drawImg() {
-            var testImage = new Image(); // Creates a new image object
-            testImage.src = "https://via.placeholder.com/80";
-            
-            // Image must load before it can be drawn
-            testImage.onload = function() {
-                ctx.drawImage(testImage, 180, 20, 80, 80);
-                console.log("Image Loaded");
-            };
+            var myImg = new Image();
+        myImg.src = "https://via.placeholder.com/80";
+        myImg.onload = function() {
+            ctx.drawImage(myImg, 150, 50, 80, 80);
+            console.log("Image worked");
+        };
 	}
 	       
         function resetCanvas() { //This function wipes the canvas entirely by erasing all pixels  from the origin (0,0) to the full canvas width and height.
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            console.log("Canvas Cleared");
+            console.log("Reset Worked");
     }
 	
 </script>
