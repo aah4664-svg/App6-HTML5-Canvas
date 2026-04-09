@@ -30,7 +30,6 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
    <head> 
       <title>App6---HTML5-Canvas</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
       <link rel="stylesheet" href="w3.css">
       <link rel="stylesheet" href="w3-colors-flat.css">
    </head> 
@@ -80,47 +79,46 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 	<hr> <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
 		<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
 </div>
-
+<footer class="w3-bottom w3-container w3-flat-carrot">
+	<p>DIY!</p>
+</footer>
+	
 <script>
 	
 	var docMod = document.lastModified; // loads last modified time stamp into docMod variable
-	
 /*	alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.*/
-	
 	console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
 
 	var canvas = document.getElementById("myCanvas"); //locate the canvas in the HTML document using 'myCanvas'
-
 	var ctx = canvas.getContext("2d"); //initialize the 2d context
 
 	function drawRect() { //triggers when the first button is clicked and draws a rectangle and orange hex code
-		ctx.fillStyle = #FFA500"; 
-		ctx.fillRect(50, 50, 100, 75); //width and height
-		console.log("Rectangle function executed"); 
+		ctx.fillStyle = "#0000FF"; 
+		ctx.fillRect(50, 50, 100, 100); //width and height
+		console.log("Rectangle Drawn"); 
 	}
 	
 	function drawName() { //draws user's name as text
-         ctx.font = "24px Arial"; // Defining the font size and typeface
-         ctx.fillStyle = "#000000"; // Setting text color to black
-        ctx.fillText("Your Name Here", 10, 200); // Drawing the string
-        console.log("Name drawn on canvas");
+         ctx.font = "20px Arial"; // Defining the font size and typeface
+         ctx.fillStyle = "black"; // Setting text color to black
+        ctx.fillText("Your Name Here", 20, 230); // Drawing the string
+        console.log("Name Drawn");
     }
 
 	function drawImg() {
-            var myLogo = new Image(); // Creates a new image object
-            myLogo.src = "https://via.placeholder.com/80"; // The source URL of the image
+            var testImage = new Image(); // Creates a new image object
+            testImage.src = "https://via.placeholder.com/80";
             
-            // This event triggers once the image has successfully downloaded
-            myLogo.onload = function() {
-                // drawImage(imageObject, x, y, width, height)
-              ctx.drawImage(myLogo, 180, 20, 80, 80);
-             console.log("Image drawn successfully");
+            // Image must load before it can be drawn
+            testImage.onload = function() {
+                ctx.drawImage(testImage, 180, 20, 80, 80);
+                console.log("Image Loaded");
             };
 	}
 	       
-        function clearCanvas() { //This function wipes the canvas entirely by erasing all pixels  from the origin (0,0) to the full canvas width and height.
+        function resetCanvas() { //This function wipes the canvas entirely by erasing all pixels  from the origin (0,0) to the full canvas width and height.
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            console.log("Canvas has been cleared");
+            console.log("Canvas Cleared");
     }
 	
 </script>
