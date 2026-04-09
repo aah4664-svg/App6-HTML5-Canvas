@@ -27,101 +27,103 @@ https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
 	
-   <head> 
-      <title>App6---HTML5-Canvas</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
-	
-<style>
-	/* Basic styling to ensure the app body takes up full screen*/
-	body {
-    	 margin: 0;
-	}
-	/* ensuring the canvas doesnt overflow on small screens*/
-	#myCanvas {
-		max-width: 100%;
-		height: auto;
-	}
-	.page {
-	    width: 100vw;
-	    height: 100vh;
-	    position: fixed;
-	    top: 0;
-	    left: -100vw;
-	    overflow-y: auto;
-	    z-index: 0;
-	    background-color: hsl(0,0%,100%);
-	}
-  .page:target {
-    left: 0vw;
-    z-index: 1;
-	}
-	</style>
-</head> 
-	
+<head>
+    <title>App6---HTML5-Canvas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="w3-colors-flat.css">
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #myCanvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .page {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            overflow-y: auto;
+            z-index: 0;
+            background-color: hsl(0,0%,100%);
+        }
+
+        .page:target {
+            left: 0vw;
+            z-index: 1;
+        }
+    </style>
+</head>
+
 <body>
-<div id="header" class="w3-container w3-flat-carrot">
-	<h1>App6---HTML5-Canvas</h1>
-</div>
-	
-<div id="content" class="w3-container">
-	<p>Press the buttons below to interact with the canvas!</p>
+    <div id="header" class="w3-container w3-flat-carrot">
+        <h1>App6---HTML5-Canvas</h1>
+    </div>
 
- <canvas id="myCanvas" width="300" height="225" style="border:2px solid #000000;"></canvas>
+    <div id="content" class="w3-container">
+        <p>Press the buttons below to interact with the canvas!</p>
 
-	<div class="w3-container">
-		<button onclick="drawRect();" class="w3-button w3-grey">Draw Rectangle</button>
-        <button onclick="drawName();" class="w3-button w3-grey">Draw Name</button>
-        <button onclick="drawImg();" class="w3-button w3-grey">Load Image</button>
-        <button onclick="resetCanvas();" class="w3-button w3-grey">Reset Canvas</button>
-	</div>
-	
-	<hr> <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
-		<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
-</div>
-	
-<footer class="w3-bottom w3-container w3-flat-carrot">
-	<p>DIY!</p>
-</footer>
-	
-<script>	
-	var docMod = document.lastModified; // loads last modified time stamp into docMod variable
-/*	alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.*/
-	console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
+        <canvas id="myCanvas" width="300" height="225" style="border:2px solid #000000;"></canvas>
 
-	var canvas = document.getElementById("myCanvas"); //locate the canvas in the HTML document using 'myCanvas'
-	var ctx = canvas.getContext("2d"); //initialize the 2d context
+        <div class="w3-container">
+            <button onclick="drawRect();" class="w3-button w3-grey">Draw Rectangle</button>
+            <button onclick="drawName();" class="w3-button w3-grey">Draw Name</button>
+            <button onclick="drawImg();" class="w3-button w3-grey">Load Image</button>
+            <button onclick="resetCanvas();" class="w3-button w3-grey">Reset Canvas</button>
+        </div>
 
-	function drawRect() { //triggers when the first button is clicked and draws a rectangle and orange hex code
-		ctx.fillStyle = "#0000FF"; 
-		ctx.fillRect(50, 50, 100, 100); //width and height
-		console.log("Rectangle Drawn"); 
-	}
-	
-	function drawName() { //draws user's name as text
-         ctx.font = "20px Arial"; // Defining the font size and typeface
-         ctx.fillStyle = "black"; // Setting text color to black
-        ctx.fillText("Amy Hernandez", 20, 200); // Drawing the string
-        console.log("Name Drawn");
-    }
+        <hr>
+        <p>
+            The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at Austin. This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.
+        </p>
+        <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+    </div>
 
-	function drawImg() {
+    <footer class="w3-bottom w3-container w3-flat-carrot">
+        <p>DIY!</p>
+    </footer>
+
+    <script>
+        var docMod = document.lastModified;
+        console.log("This file last modified " + docMod);
+
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        function drawRect() {
+            ctx.fillStyle = "#0000FF";
+            ctx.fillRect(50, 50, 100, 100);
+            console.log("Rectangle Drawn");
+        }
+
+        function drawName() {
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "black";
+            ctx.fillText("Amy Hernandez", 20, 200);
+            console.log("Name Drawn");
+        }
+
+        function drawImg() {
             var myImg = new Image();
-			myImg.src = "https://via.placeholder.com/80";
-		
-       		myImg.onload = function() {
-           	 ctx.drawImage(myImg, 150, 50, 80, 80);
-         	 console.log("Image worked");
-        };
-	}
-	       
-        function resetCanvas() { //This function wipes the canvas entirely by erasing all pixels  from the origin (0,0) to the full canvas width and height.
+            myImg.src = "https://via.placeholder.com/80";
+
+            myImg.onload = function() {
+                ctx.drawImage(myImg, 150, 50, 80, 80);
+                console.log("Image worked");
+            };
+        }
+
+        function resetCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             console.log("Reset Worked");
-    }
-	
-</script>
+        }
+    </script>
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
